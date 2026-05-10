@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+
+    <title>POI MAP</title>
+
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+    <!-- Leaflet (CDN statt lokal) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Sidebar v2 (CDN Version) -->
+    <link rel="stylesheet" href="lib/leaflet/sidebar-v2/css/leaflet-sidebar.css">
+
+    <!-- Leaflet Draw -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
+
+    <!-- MarkerCluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="sidebar" class="sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="sidebar-tabs">
+        <ul role="tablist">
+            <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+            <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+            <li><a href="#contracts" role="tab"><i class="fa fa-envelope"></i></a></li>
+            <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+        </ul>
+
+        <ul role="tablist">
+            <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+        </ul>
+    </div>
+
+    <!-- Tab panes -->
+    <div class="sidebar-content">
+        <!--Home Tab-->
+        <div class="sidebar-pane" id="home">
+            <h1 class="sidebar-header">
+                Home
+                <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+            </h1>
+
+            <!--Content of Home-->
+            <div id = "home-content"></div>
+        </div>
+
+        <!--Profile Tab-->
+        <div class="sidebar-pane" id="profile">
+            <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div id = "profile-content"></div>
+        </div>
+
+        <!--Contract Tab-->
+        <div class="sidebar-pane" id="contracts">
+            <h1 class="sidebar-header">Contracts<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            <div class = "table-container">
+                <table class = "contracts-table">
+                    <thead>
+                        <tr id = "contracts-header"></tr>
+                    </thead>
+                    <tbody id = "contracts-content"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--Settings Tab-->
+        <div class="sidebar-pane" id="settings">
+            <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+        </div>
+    </div>
+</div>
+
+<div id="color-popup" style="display:none; position:fixed; top:40%; left:50%; transform:translate(-50%, -50%);
+background:white; padding:15px; border:1px solid #ccc; border-radius:8px; z-index:2000;">
+
+    <label>Farbe wählen:</label>
+    <select id="color-select">
+        <option value="#ff0000">Rot</option>
+        <option value="#00ff00">Grün</option>
+        <option value="#0000ff">Blau</option>
+        <option value="#ffff00">Gelb</option>
+    </select>
+
+    <br><br>
+    <button id="color-confirm">Bestätigen</button>
+    <button id="color-cancel">Abbrechen</button>
+</div>
+
+<div id="map" class = "sidebar-map"></div>
+
+<a href="https://github.com/Turbo87/sidebar-v2/"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+
+<!--JS Scripts-->
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Sidebar v2 -->
+<script src="lib/leaflet/sidebar-v2/js/leaflet-sidebar.js"></script>
+
+<!-- Marker Cluster -->
+<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+<!-- Leaflet Draw -->
+<script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+
+<script src="js/map.js"></script>
+<script src="js/marker.js"></script>
+<script src="js/sidebar.js"></script>
+<script src="js/api.js"></script>
+<script src="js/interactables.js"></script>
+<script src="js/draw.js"></script>
+<script src="js/login.js"></script>
+<script src="js/contracts.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

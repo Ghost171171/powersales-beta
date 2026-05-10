@@ -1,0 +1,347 @@
+/* =========================
+   Base Layout
+========================= */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+html, body, #map {
+    height: 100%;
+    width: 100%;
+    font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   Login Screen
+========================= */
+#loginScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* =========================
+   Map Layout
+========================= */
+#map {
+    position: absolute;
+    inset: 0;
+}
+
+.sidebar-map {
+    height: 100%;
+    width: 100%;
+}
+
+/* =========================
+   Contract Table
+========================= */
+.table-container {
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+thead th {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 2;
+}
+
+/* =========================
+   SIDEBAR BASE (sidebar-v2)
+========================= */
+
+.sidebar-pane {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    color: #222;
+    line-height: 1.5;
+
+    /* stabiler Innenabstand */
+    padding: 10px 20px 14px 20px;
+}
+
+.sidebar-header {
+    margin: -10px -20px 8px -20px;
+}
+
+/* =========================
+   CONTENT FLOW SYSTEM
+========================= */
+
+#home-content,
+#profile-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    margin-top: 0;
+    padding-top: 4px;
+}
+
+#home-content h2 {
+    margin: 6px 0 4px 0;
+
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    color: #1f1f1f;
+}
+
+#home-content p {
+    margin: 4px 0;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.55;
+}
+
+/* =========================
+   CARD SYSTEM
+========================= */
+
+.sidebar-pane section {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+
+    padding: 14px 16px;
+
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.sidebar-pane section:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.sidebar-pane h3 {
+    margin: 0 0 8px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.sidebar-pane p {
+    margin: 5px 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #444;
+}
+
+.sidebar-pane strong {
+    color: #0074d9;
+    font-weight: 600;
+}
+
+.poi-list li {
+    cursor: pointer;
+}
+
+/* =========================
+   INTRO BLOCK
+========================= */
+
+.intro-text {
+    font-size: 13.8px;
+    color: #555;
+    line-height: 1.6;
+
+    background: linear-gradient(180deg, #f8f9fb, #ffffff);
+    border-left: 3px solid #0074d9;
+
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+/* =========================
+   Leaflet Minor UI
+========================= */
+
+.leaflet-search-control {
+    background: white;
+    padding: 5px;
+    border-radius: 6px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+/* =========================
+   POI LIST (RECT VIEW)
+========================= */
+
+.poi-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Einzelnes POI-Item */
+.poi-list li {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+
+    padding: 12px 14px;
+
+    font-size: 14px;
+    color: #222;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: all 0.15s ease;
+}
+
+/* Hover Effekt */
+.poi-list li:hover {
+    background: #f8f9fb;
+    border-color: #0074d9;
+
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Klick Feedback */
+.poi-list li:active {
+    transform: scale(0.98);
+}
+
+/* Haupttext (Straße + Hausnummer) */
+.poi-list li::before {
+    content: "📍";
+    margin-right: 8px;
+}
+
+/* Optional: Chevron rechts */
+.poi-list li::after {
+    content: "›";
+    font-size: 16px;
+    color: #999;
+}
+
+/* Hover Chevron */
+.poi-list li:hover::after {
+    color: #0074d9;
+}
+
+/* Titel */
+.poi-list-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #1f1f1f;
+}
+
+/* =========================
+   TABLE
+========================= */
+.table-container {
+    max-height: 100vh;
+    overflow-y: auto;
+
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    background: #fff;
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contracts-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+    font-size: 13.5px;
+    overflow: hidden;
+}
+
+/*Header*/
+.contracts-table thead th {
+    text-align: left;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.3px;
+    padding: 10px 12px;
+    color: #666;
+    background: #f4f6f8;
+    border-bottom: 1px solid #e2e6ea;
+}
+
+/* Rows */
+.contracts-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+/* Hover Effekt */
+.contracts-table tbody tr:hover {
+    background: #f8f9fb;
+    cursor: pointer;
+}
+
+/* Cells */
+.contracts-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+}
+
+/* Zebra optional */
+.contracts-table tbody tr:nth-child(even) {
+    background: #fcfcfc;
+}
+
+/* ID Spalte dezenter */
+.contracts-table td:nth-child(2) {
+    font-family: monospace;
+    font-size: 12px;
+    color: #777
+}
+
+.group-separator td {
+    border-top: 2px solid #dce3ea;
+}
+
+.group-header td {
+    padding: 10px 12px;
+    background: #f4f6f8;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Status in Tabelle */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-red {
+    background: #ffe5e5;
+    color: #c0392b;
+}
+
+.status-grey {
+    background: #eeeeee;
+    color: #555;
+}
+
+.status-green {
+    background: #e6f7ea;
+    color: #1e7e34;
+}

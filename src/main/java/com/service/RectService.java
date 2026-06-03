@@ -4,6 +4,7 @@ import com.model.rect.BoundsRect;
 import com.repository.RectRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -20,6 +21,7 @@ public class RectService {
     }
 
     public void updateRect(BoundsRect rect) {
+        rect.setCreatedAt(getCreatedAtFromDB(rect.getId()));
         rectRepository.updateDrawnRect(rect);
     }
 
@@ -37,5 +39,11 @@ public class RectService {
 
     public ArrayList<BoundsRect> getRectsByUserId(UUID assignedUserId) {
         return new ArrayList<>(rectRepository.getDrawnRectsByUserId(assignedUserId));
+    }
+
+    private LocalDateTime getCreatedAtFromDB(UUID rectId) {
+        return rectRepository.getCreatedAt(rectId).orElseThrow(
+                () -> new IllegalStateException("createdAt missing for rect: " + rectId)
+        );
     }
 }

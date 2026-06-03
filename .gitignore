@@ -41,4 +41,5 @@ src/main/resources/db/pois.db
 src/ConsoleInput.java
 src/Main.java
 src/PrototypeSim.java
+*.csv
 

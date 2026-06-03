@@ -98,14 +98,13 @@ public class RectRepository {
     public void updateDrawnRect(BoundsRect updatetRect) {
         String sql = """
                 INSERT INTO drawnRect(
-                    id, minLat, minLon, maxLat, maxLon, updatedAt, assignedUserId, color
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    id, minLat, minLon, maxLat, maxLon, createdAt, updatedAt, assignedUserId, color
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                     ON CONFLICT (id) DO UPDATE SET
                     minLat = excluded.minLat,
                     minLon = excluded.minLon,
                     maxLat = excluded.maxLat,
                     maxLon = excluded.maxLon,
-                    createdAt = excluded.createdAt,
                     updatedAt = excluded.updatedAt,
                     assignedUserId = excluded.assignedUserId,
                     color = excluded.color;
@@ -130,6 +129,7 @@ public class RectRepository {
         pstmt.setDouble(3, updatedRect.getMinLon());
         pstmt.setDouble(4, updatedRect.getMaxLat());
         pstmt.setDouble(5, updatedRect.getMaxLon());
+        pstmt.setString(6, updatedRect.getCreatedAt().toString());
         pstmt.setString(7, now.toString());
         pstmt.setString(8, updatedRect.getAssignedUserId() != null ? updatedRect.getAssignedUserId().toString() : null);
         pstmt.setString(9, updatedRect.getColor() != null ? updatedRect.getColor() : null);
@@ -247,5 +247,35 @@ public class RectRepository {
                 assignedUserId,
                 rs.getString("color")
         );
+    }
+
+    public Optional<LocalDateTime> getCreatedAt(UUID id) {
+        String sql = "SELECT createdAt FROM drawnRect WHERE id = ?";
+
+        try (Connection conn = DriverManager.getConnection(dbURL);
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, id.toString());
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String createdAtStr = rs.getString("createdAt");
+
+                if (createdAtStr == null) {
+                    return Optional.empty();
+                }
+
+                LocalDateTime createdAt =
+                        LocalDateTime.parse(createdAtStr.replace(" ", "T"));
+
+                return Optional.of(createdAt);
+            }
+
+            return Optional.empty();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

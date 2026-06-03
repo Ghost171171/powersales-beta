@@ -1,9 +1,7 @@
-const baseUrl = "http://localhost:8080";
+const baseUrl = `http://192.168.178.152:8080`;
 const UNAUTHORIZED_EVENT = "app:unauthorized";
 
-/**
- * Central API wrapper
- */
+//Central API wrapper
 async function apiFetch(url, options = {}) {
     const resp = await fetch(baseUrl + url, {
         credentials: "include",
@@ -41,8 +39,6 @@ async function getPOIs(bounds) {
 }
 //Send GET, Load Rects from server
 async function getRects() {
-    if (!APP_STATE.currentUser) return [];
-
     const resp = await apiFetch("/rects");
     return resp.json();
 }
@@ -78,7 +74,6 @@ async function getUserId(username) {
 }
 //get user contracts by id, if user is admin send all
 async function getContracts() {
-    if (!APP_STATE.currentUser) return [];
 
     let url = "/contracts";
 

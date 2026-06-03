@@ -1,7 +1,17 @@
 /* =========================
    Base Layout
 ========================= */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     padding: 0;
     margin: 0;
 }
@@ -10,6 +20,15 @@ html, body, #map {
     height: 100%;
     width: 100%;
     font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+button, input, select {
+    font: inherit;
+    color: inherit;
+}
+
+button {
+    cursor: pointer;
 }
 
 /* =========================

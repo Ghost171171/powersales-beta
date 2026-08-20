@@ -1,4 +1,4 @@
-const baseUrl = `http://192.168.178.152:8080`;
+const baseUrl = `http://${window.location.hostname}:8080`;
 const UNAUTHORIZED_EVENT = "app:unauthorized";
 
 //Central API wrapper
@@ -37,6 +37,13 @@ async function getPOIs(bounds) {
 
     return resp.json();
 }
+
+//Send GET, Load a single Rect
+async function getRect(id) {
+    const resp = await apiFetch(`/rects/${id}`);
+    return resp.json();
+}
+
 //Send GET, Load Rects from server
 async function getRects() {
     const resp = await apiFetch("/rects");
@@ -197,6 +204,12 @@ async function updateContractStatus(id, status) {
 async function deleteRect(id) {
     await apiFetch(`/rects/${id}`, {
         method: "DELETE"
+    });
+}
+
+async function saveDateToRect(id, date) {
+    await apiFetch(`/rects/${id}/updatedAt?updatedAt=${encodeURIComponent(date)}`, {
+        method: "PUT"
     });
 }
 

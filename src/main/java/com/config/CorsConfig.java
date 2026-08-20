@@ -12,7 +12,12 @@ public class CorsConfig implements WebMvcConfigurer {
 
     private static final List<String> ALLOWED_ORIGINS = List.of(
             "http://localhost:*",
-            "http://192.168.*:*"
+            "https://localhost:*",
+            "http://127.0.0.1:*",
+            "https://127.0.0.1:*",
+            "http://192.168.*:*",
+            "http://10.*:*",
+            "http://172.*:*"
     );
 
     @Override

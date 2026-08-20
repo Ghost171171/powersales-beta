@@ -10,7 +10,10 @@ Ziel des Systems:
 * Automatisierung und Strukturierung des Workflows für Mitarbeiter
 * Transparenz und Kontrolle für Administratoren über alle Vertriebsaktivitäten
 
----
+Weitere Funktionen des Systems:
+* improtcsv - Programm zum Importieren von einer CSW Datei, um neue Orte dem System hinzuzufügen
+* CreateUserSystem (CUS) - Erstelle neue Nutzer für das System
+----
 
 ## Features
 
